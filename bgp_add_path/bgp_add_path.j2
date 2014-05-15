@@ -1,0 +1,22 @@
+protocols {
+    bgp {
+        {%- for peer_group in internal_peers %}
+        group {{ peer_group.group_name }} {;
+            type internal;
+            local-address {{ peer_group.local_address }};
+            {% for protocol in peer_group.address_family %}
+            family {{ protocol }} {
+                {% for safi in peer_group.address_family %}
+                {{ peer_group.address_family[safi] }};
+                {%- endfor %}
+            }
+            {%- endfor %}
+            {%- for neighbour in peer_group.neighbours %}
+            neighbor {{ neighbour }};
+            {%- endfor %}
+        }
+        {%- endfor %}
+
+    }
+}
+

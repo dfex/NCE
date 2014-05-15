@@ -1,0 +1,32 @@
+---
+
+internal_peers:
+    - group_name: INTERNAL-WEST-PEERS
+      local_address: 192.168.1.2
+      neighbours:
+          - 192.168.100.250
+          - 192.168.101.250
+          - 192.168.102.250
+          - 192.168.103.250
+      address_family:
+          - inet:
+              - prefix_type: unicast
+              - prefix_type: labelled-unicast
+          - inet6:
+                prefix_type:
+                  - unicast
+                  - labelled-unicast
+    - group_name: INTERNAL-WEST-PEERS
+      local_address: 192.168.2.2
+      neighbours:
+          - 192.168.200.250
+          - 192.168.201.250
+          - 192.168.202.250
+          - 192.168.203.250
+      address_family:
+          - inet:
+              - unicast
+              - labelled-unicast
+          - inet6:
+              - unicast
+              - labelled-unicast
